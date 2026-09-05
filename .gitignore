@@ -1,0 +1,23 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+bin/
+
+# Test binary, coverage files
+*.test
+*.out
+coverage.tmp
+coverage.html
+
+# Environment variables
+.env
+
+# IDE specific files
+.idea/
+.vscode/
+
+# Dependency directories
+vendor/
