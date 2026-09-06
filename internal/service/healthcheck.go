@@ -1,8 +1,9 @@
 package service
 
 import (
+	"uuid"
+
 	"github.com/chinhan142/EBVN_BackendGoLang/internal/model"
-	"github.com/google/uuid"
 )
 
 type HealthCheck interface {
@@ -10,22 +11,25 @@ type HealthCheck interface {
 }
 
 type healthCheckService struct {
-	cfg *Config
+	serviceName string
+	instanceID  string
 }
 
-func NewHealthCheck(cfg *Config) HealthCheck {
-	if cfg.InstanceID == "" {
-		cfg.InstanceID = uuid.New().String()
+func NewHealthCheck(serviceName string, instanceID string) HealthCheck {
+	if instanceID == "" {
+		instanceID = uuid.New().String()
 	}
+
 	return &healthCheckService{
-		cfg: cfg,
+		serviceName: serviceName,
+		instanceID:  instanceID,
 	}
 }
 
 func (s *healthCheckService) GetHealthCheck() model.Healthcheck {
 	return model.Healthcheck{
 		Message:     "OK",
-		ServiceName: s.cfg.ServiceName,
-		InstanceID:  s.cfg.InstanceID,
+		ServiceName: s.serviceName,
+		InstanceID:  s.instanceID,
 	}
 }
