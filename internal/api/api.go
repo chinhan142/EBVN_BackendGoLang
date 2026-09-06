@@ -8,6 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// Engine defines the HTTP server engine interface.
 type Engine interface {
 	Start() error
 }
@@ -17,6 +18,7 @@ type engine struct {
 	cfg *Config
 }
 
+// NewEngine creates a new Engine instance and registers all routes.
 func NewEngine(cfg *Config) Engine {
 	app := &engine{
 		app: gin.Default(),
