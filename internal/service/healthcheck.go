@@ -1,9 +1,8 @@
 package service
 
 import (
-	"uuid"
-
 	"github.com/chinhan142/EBVN_BackendGoLang/internal/model"
+	"github.com/google/uuid"
 )
 
 type HealthCheck interface {
